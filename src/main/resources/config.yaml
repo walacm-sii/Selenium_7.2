@@ -1,0 +1,17 @@
+default environment: test
+browser: chrome
+
+environments:
+  - envName: test
+    webUrl: http://www.seleniumui.moderntester.pl/modal-dialog.php
+    userName: Tester
+    password: password123
+    mail: test@gmail.com
+    waitValue: 3
+
+  - envName: int
+    webUrl: https://sii.pl/
+    userName: Tester
+    password: password123
+    mail: test2@gmail.com
+    waitValue: 10
