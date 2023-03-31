@@ -1,0 +1,20 @@
+default environment: test
+
+browser:
+  browser name: chrome
+  headless: false
+  wait: 3
+
+environments:
+  - env name: test
+    web url: http://www.seleniumui.moderntester.pl/modal-dialog.php
+    userName: Tester
+    password: password123
+    mail: test@gmail.com
+    currency: USD
+
+  - env name: int
+    web url: https://sii.pl/
+    userName: Tester
+    password: password123
+    mail: test2@gmail.com
