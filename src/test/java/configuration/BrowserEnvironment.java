@@ -10,14 +10,17 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserEnvironment {
-    private EnvironmentProperty environmentProperty;
+    private final String BROWSER_PROPERTY_KEY = "browser name";
+    private final String WAIT_VALUE_KEY = "wait";
+
+    private final String URL_KEY = "web url";
     public BrowserEnvironment() {
-        environmentProperty = EnvironmentProperty.getInstance();
+        EnvironmentProperty.getInstance();
     }
 
     public WebDriver getDriver() {
         WebDriver driver;
-        switch (environmentProperty.getBrowser()) {
+        switch (System.getProperty(BROWSER_PROPERTY_KEY)) {
             case "chrome":
                 ChromeOptions optionsChrome = new ChromeOptions();
                 WebDriverManager.chromedriver().setup();
@@ -29,8 +32,8 @@ public class BrowserEnvironment {
                 WebDriverManager.iedriver().setup();
                 driver = new InternetExplorerDriver(optionsDefault);
         }
-        driver.manage().timeouts().implicitlyWait(environmentProperty.getEnvironment().waitValue(), TimeUnit.SECONDS);
-        driver.get(environmentProperty.getEnvironment().webUrl());
+        driver.manage().timeouts().implicitlyWait(Integer.parseInt(System.getProperty(WAIT_VALUE_KEY)), TimeUnit.SECONDS);
+        driver.get(System.getProperty(URL_KEY));
         return driver;
     }
 }
